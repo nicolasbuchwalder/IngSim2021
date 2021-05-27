@@ -209,8 +209,7 @@ def main():
     y_pred = model(sequence)
     
     # formatting the prediction, time interval and prediction (with threashold) to dataframe for exporting
-    out = pd.DataFrame([y_pred[0].detach().numpy(),prediction(y_pred[0].detach().numpy(),0.1),TIME_INT], columns=[['prediction','threasholded_prediction','time_interval']] ,index=[datetime.datetime.strftime(datetime.datetime.now(), "%Y-%m-%d,%Hh%M")])
-
+    out = pd.DataFrame([y_pred[0].detach().numpy()[0],prediction(y_pred[0].detach().numpy()[0],0.1),TIME_INT], index=['prediction','threasholded_prediction','time_interval'] ,columns=[datetime.datetime.strftime(datetime.datetime.now(), "%Y-%m-%d,%Hh%M")]).transpose()
     # exporting csv file
     out.to_csv(os.path.join(sys.path[0],'data/live_preds.csv'),mode='a',header=False)
 
