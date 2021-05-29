@@ -1,1 +1,11 @@
 *.csv
+
+pytorch_models/
+
+.ipynb_checkpoints/
+
+.DS_Store
+
+*.parquet
+
+plots/
